@@ -35,6 +35,8 @@ def _parse_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
 ) -> Optional[Union[HTTPValidationError, RetrievedChunks]]:
     if response.status_code == HTTPStatus.OK:
+        # print(response.status_code) == HTTPStatus.OK
+        print(response.json())
         response_200 = RetrievedChunks.from_dict(response.json())
 
         return response_200

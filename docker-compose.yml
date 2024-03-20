@@ -1,6 +1,27 @@
 version: '3.7'
 
 services:
+  frontend:
+    image: frontend
+    environment:
+      # ENVIRONMENT: LOCAL
+      # SENTENCE_TRANSFORMERS_HOME: "/tmp/cache/sentence_transformers"
+      # HF_HOME: "/tmp/cache/hf"
+      DB: "postgresql://dewydbuser:dewydbpwd@postgres/dewydb"
+    env_file:
+      - .env
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:5173"   # http on localhost:8000
+    networks:
+      - kb-network
+    depends_on:
+      - postgres
+    # volumes:
+    #   - dewy-cache:/tmp/cache
+
   dewy:
     image: dewy
     environment:
