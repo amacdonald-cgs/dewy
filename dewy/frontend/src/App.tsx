@@ -16,6 +16,7 @@ import { DocumentList, DocumentCreate, DocumentEdit, DocumentShow } from "./Docu
 import { ChunkList } from "./Chunk";
 import { Search } from "./Search";
 import { MyLayout } from "./MyLayout";
+import { LlmSearch } from "./LlmSearch";
 
 export const App = () => (
   <Admin 
@@ -49,6 +50,7 @@ export const App = () => (
     />
     <CustomRoutes>
       <Route path="/search" element={<Search />} />
+      <Route path="/llmsearch" element={<LlmSearch />} />
     </CustomRoutes>
   </Admin>
 );

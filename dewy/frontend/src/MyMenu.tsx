@@ -5,5 +5,6 @@ export const MyMenu = () => (
     <Menu>
         <Menu.ResourceItems />
         <Menu.Item to="/search" primaryText="Search" leftIcon={<SearchIcon />}/>
+        <Menu.Item to="/llmsearch" primaryText="LLM Search" leftIcon={<SearchIcon />}/>
     </Menu>
 );
