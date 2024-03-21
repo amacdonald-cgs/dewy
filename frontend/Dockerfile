@@ -14,6 +14,9 @@ FROM node:20.9.0-alpine
 # as frontend-stage
 WORKDIR /app
 COPY ./package.json ./package.json
+RUN npm install openai
+RUN npm install dewy-ts
+RUN npm install langchain
 RUN npm install --silent
 
 COPY . .

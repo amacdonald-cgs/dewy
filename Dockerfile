@@ -10,13 +10,13 @@ RUN poetry export -f requirements.txt --output requirements.txt --without-hashes
 
 ######
 # 2. Compile the frontend
-FROM node:20.9.0-alpine as frontend-stage
-WORKDIR /app
-COPY ./dewy/frontend/package.json ./package.json
-RUN npm install --silent
+# FROM node:20.9.0-alpine as frontend-stage
+# WORKDIR /app
+# COPY ./dewy/frontend/package.json ./package.json
+# RUN npm install --silent
 
-COPY ./dewy/frontend/ ./
-RUN npm run build
+# COPY ./dewy/frontend/ ./
+# RUN npm run build
 
 ######
 # 3. Create the actual image.
@@ -29,6 +29,6 @@ RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
 
 # Finally, copy in the application code.
 COPY ./dewy /code/dewy
-COPY --from=frontend-stage /app/dist /code/dewy/frontend/dist
+# COPY --from=frontend-stage /app/dist /code/dewy/frontend/dist
 
 CMD ["python", "-m", "dewy", "serve"]
